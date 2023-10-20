@@ -55,7 +55,7 @@ int run_printf(const char *format, va_list arg, buf_er *output)
 				break;
 		}
 	}
-	r += _memcpy(output, (format + i), 1);
+	r += mem_cpy(output, (format + i), 1);
 		i += (len != 0) ? 1 : 0;
 	}
 	/**

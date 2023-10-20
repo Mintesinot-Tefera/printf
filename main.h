@@ -118,25 +118,25 @@ unsigned int conv_R(va_list args, buffer_t *output,
 >>>>>>> 418bec0be4fac8bbefd7ed3fb73a62611b29f32e
 
 /* Handlers */
-unsigned char handle_flags(const char *flags, char *index);
-unsigned char handle_length(const char *modifier, char *index);
-int handle_width(va_list arg, const char *modifier, char *index);
-int handle_precision(va_list arg, const char *modifier, char *index);
-unsigned int (*handle_specifiers(const char *specifier))(va_list, buf_er *,
+unsigned char hand_flags(const char *flags, char *index);
+unsigned char hand_length(const char *modifier, char *index);
+int hand_width(va_list arg, const char *modifier, char *index);
+int hand_precision(va_list arg, const char *modifier, char *index);
+unsigned int (*hand_specifiers(const char *specifier))(va_list, buf_er *,
 		unsigned char, int, int, unsigned char);
 
 /* Modifiers */
-unsigned int print_width(buf_er *output, unsigned int printed,
+unsigned int pr_width(buf_er *output, unsigned int printed,
 		unsigned char flags, int width);
-unsigned int print_string_width(buf_er *output,
+unsigned int pr_str_width(buf_er *output,
 		unsigned char flags, int width, int precision, int size);
-unsigned int print_neg_width(buf_er *output, unsigned int printed,
+unsigned int pr_neg_width(buf_er *output, unsigned int printed,
 		unsigned char flags, int width);
 
 /* Helper Functions */
 buf_fer *init_buffer(void);
 void free_buffer(buf_er *output);
-unsigned int _memcpy(buf_er *output, const char *src, unsigned int n);
+unsigned int mem_cpy(buf_er *output, const char *src, unsigned int n);
 unsigned int conv_sb(buf_er *output, long int num, char *base,
 		unsigned char flags, int width, int precision);
 unsigned int conv_ub(buf_er *output, unsigned long int num, char *base,
