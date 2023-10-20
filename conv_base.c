@@ -1,51 +1,52 @@
 #include "main.h"
 
-unsigned int conv_sb(buffer_t *output, long int num, char *base,
-		unsigned char flags, int wid, int prec);
-unsigned int conv_ub(buffer_t *output,
-		unsigned long int num, char *base,
-		unsigned char flags, int wid, int prec);
+unsigned int conv_sb(buf_er *output,
+		long int n, char *b,
+		unsigned char flags, int width, int precision);
+unsigned int conv_ub(buf_er *output,
+		unsigned long int n, char *b,
+		unsigned char flags, int width, int precision);
 
 /**
  * conv_sb - Converts a signed long to an inputted base and stores
  *                 the result to a buffer contained in a struct.
  * @output: A buffer_t struct containing a character array.
- * @num: A signed long to be converted.
- * @base: A pointer to a string containing the base to convert to.
+ * @n: A signed long to be converted.
+ * @b: A pointer to a string containing the base to convert to.
  * @flags: Flag modifiers.
- * @wid: A width modifier.
- * @prec: A precision modifier.
+ * @width: A width modifier.
+ * @precision: A precision modifier.
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int conv_sb(buffer_t *output, long int num, char *base,
-		unsigned char flags, int wid, int prec)
+unsigned int conv_sb(buf_er *output, long int n, char *b,
+		unsigned char flags, int width, int precision)
 {
 	int size;
 	char digit, pad = '0';
 	unsigned int r = 1;
 
-	for (size = 0; *(base + size);)
+	for (size = 0; *(b + size);)
 		size++;
 
-	if (num >= size || num <= -size)
-		r += conv_sb(output, num / size, base,
-				flags, wid - 1, prec - 1);
+	if (n >= size || n <= -size)
+		r += conv_sb(output, n / size, b,
+				flags, width - 1, precision - 1);
 
 	else
 	{
-		for (; prec > 1; prec--, wid--) /* Handle precision */
+		for (; precision > 1; precision--, width--) /* Handle precision */
 			r += _memcpy(output, &pad, 1);
 
 		if (NEG_FLAG == 0) /* Handle width */
 		{
 			pad = (ZERO_FLAG == 1) ? '0' : ' ';
-			for (; wid > 1; wid--)
+			for (; width > 1; width--)
 				r += _memcpy(output, &pad, 1);
 		}
 	}
 
-	digit = base[(num < 0 ? -1 : 1) * (num % size)];
+	digit = b[(n < 0 ? -1 : 1) * (n % size)];
 	_memcpy(output, &digit, 1);
 
 	return (r);
@@ -55,48 +56,48 @@ unsigned int conv_sb(buffer_t *output, long int num, char *base,
  * conv_ub - Converts an unsigned long to an inputted base and
  *                 stores the result to a buffer contained in a struct.
  * @output: A buffer_t struct containing a character array.
- * @num: An unsigned long to be converted.
- * @base: A pointer to a string containing the base to convert to.
+ * @n: An unsigned long to be converted.
+ * @b: A pointer to a string containing the base to convert to.
  * @flags: Flag modifiers.
- * @wid: A width modifier.
- * @prec: A precision modifier.
+ * @width: A width modifier.
+ * @precision: A precision modifier.
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int conv_ub(buffer_t *output, unsigned long int num, char *base,
-		unsigned char flags, int wid, int prec)
+unsigned int conv_ub(buf_er *output, unsigned long int n, char *b,
+		unsigned char flags, int width, int precision)
 {
 	unsigned int size, r = 1;
 	char digit, pad = '0', *lead = "0x";
 
-	for (size = 0; *(base + size);)
+	for (size = 0; *(b + size);)
 		size++;
 
-	if (num >= size)
-		ret += conv_ub(output, num / size, base,
-				flags, wid - 1, prec - 1);
+	if (n >= size)
+		r += conv_ub(output, n / size, b,
+				flags, width - 1, precision - 1);
 
 	else
 	{
 		if (((flags >> 5) & 1) == 1) /* Printing a ptr address */
 		{
-			wid -= 2;
-			prec -= 2;
+			width -= 2;
+			precision -= 2;
 		}
-		for (; prec > 1; prec--, wid--) /* Handle precision */
+		for (; precision > 1; precision--, width--) /* Handle precision */
 			r += _memcpy(output, &pad, 1);
 
 		if (NEG_FLAG == 0) /* Handle width */
 		{
 			pad = (ZERO_FLAG == 1) ? '0' : ' ';
-			for (; wid > 1; wid--)
+			for (; width > 1; width--)
 				r += _memcpy(output, &pad, 1);
 		}
 		if (((flags >> 5) & 1) == 1) /* Print 0x for ptr address */
 			r += _memcpy(output, lead, 2);
 	}
 
-	digit = base[(num % size)];
+	digit = b[(n % size)];
 	_memcpy(output, &digit, 1);
 
 	return (r);
