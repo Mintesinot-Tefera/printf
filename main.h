@@ -40,12 +40,12 @@ typedef struct buffer_s
  * @specifier: A character representing a conversion specifier.
  * @func: A pointer to a conversion function corresponding to specifier.
  */
-typedef struct converter_s
+typedef struct conv_s
 {
 	unsigned char specifier;
 	unsigned int (*func)(va_list, buf_er *,
 			unsigned char, int, int, unsigned char);
-} converter_t;
+} conv_t;
 
 /**
  * struct flag_s - A new type defining a flags struct.
@@ -62,58 +62,58 @@ int _printf(const char *format, ...);
 
 /* Conversion Specifier Functions */
 <<<<<<< HEAD
-unsigned int convert_c(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_s(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_di(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_percent(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_b(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_u(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_o(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_x(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_X(va_list args, buffer_t *output,
+unsigned int conv_c(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_S(va_list arg, buf_er *output,
+unsigned int conv_s(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_p(va_list arg, buf_er *output,
+unsigned int conv_di(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_r(va_list arg, buf_er *output,
+unsigned int conv_percent(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_R(va_list arg, buf_er *output,
+unsigned int conv_b(va_list arg, buf_er *output,
+		unsigned char flags, int width, int precision, unsigned char len);
+unsigned int conv_u(va_list arg, buf_er *output,
+		unsigned char flags, int width, int precision, unsigned char len);
+unsigned int conv_o(va_list arg, buf_er *output,
+		unsigned char flags, int width, int precision, unsigned char len);
+unsigned int conv_x(va_list arg, buf_er *output,
+		unsigned char flags, int width, int precision, unsigned char len);
+unsigned int conv_X(va_list arg, buf_er *output,
+		unsigned char flags, int width, int precision, unsigned char len);
+unsigned int conv_S(va_list arg, buf_er *output,
+		unsigned char flags, int width, int precision, unsigned char len);
+unsigned int conv_p(va_list arg, buf_er *output,
+		unsigned char flags, int width, int precision, unsigned char len);
+unsigned int conv_r(va_list arg, buf_er *output,
+		unsigned char flags, int width, int precision, unsigned char len);
+unsigned int conv_R(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
 =======
-unsigned int convert_c(va_list arg, buf_er *output,
+unsigned int conv_c(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_s(va_list arg, buf_er *output,
+unsigned int conv_s(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_di(va_list arg, buf_er *output,
+unsigned int conv_di(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_percent(va_list arg, buf_er *output,
+unsigned int conv_percent(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_b(va_list arg, buf_er *output,
+unsigned int conv_b(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_u(va_list arg, buf_er *output,
+unsigned int conv_u(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_o(va_list arg, buf_er *output,
+unsigned int conv_o(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_x(va_list arg, buf_er *output,
+unsigned int conv_x(va_list arg, buf_er *output,
 		unsigned char flags, int width, int precision, unsigned char len);
-unsigned int convert_X(va_list arg, buf_er *output,
+unsigned int conv_X(va_list arg, buf_er *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_S(va_list args, buffer_t *output,
+unsigned int conv_S(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_p(va_list args, buffer_t *output,
+unsigned int conv_p(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_r(va_list args, buffer_t *output,
+unsigned int conv_r(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_R(va_list args, buffer_t *output,
+unsigned int conv_R(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
 >>>>>>> 418bec0be4fac8bbefd7ed3fb73a62611b29f32e
 
