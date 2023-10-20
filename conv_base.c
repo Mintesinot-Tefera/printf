@@ -1,6 +1,6 @@
 #include "main.h"
 
-unsigned int conv_sb(buf_er *output,
+unsigned int conv_sb(buf_er * output,
 		long int n, char *b,
 		unsigned char flags, int width, int precision);
 unsigned int conv_ub(buf_er *output,
