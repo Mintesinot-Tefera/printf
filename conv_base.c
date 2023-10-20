@@ -10,9 +10,9 @@ unsigned int conv_ub(buf_er *output,
 /**
  * conv_sb - Converts a signed long to an inputted base and stores
  *                 the result to a buffer contained in a struct.
- * @output: A buffer_t struct containing a character array.
+ * @output: A buf_er struct containing a character array.
  * @n: A signed long to be converted.
- * @b: A pointer to a string containing the base to convert to.
+ * @b: A pointer to a string containing the b to convert to.
  * @flags: Flag modifiers.
  * @width: A width modifier.
  * @precision: A precision modifier.
@@ -55,9 +55,9 @@ unsigned int conv_sb(buf_er *output, long int n, char *b,
 /**
  * conv_ub - Converts an unsigned long to an inputted base and
  *                 stores the result to a buffer contained in a struct.
- * @output: A buffer_t struct containing a character array.
+ * @output: A buf_er struct containing a character array.
  * @n: An unsigned long to be converted.
- * @b: A pointer to a string containing the base to convert to.
+ * @b: A pointer to a string containing the b to convert to.
  * @flags: Flag modifiers.
  * @width: A width modifier.
  * @precision: A precision modifier.
