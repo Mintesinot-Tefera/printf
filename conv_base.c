@@ -19,7 +19,7 @@ unsigned int conv_ubase(buf_er *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int conv_sbase(buf_er *output, long int n, char *b,
+unsigned int conv_sb(buf_er *output, long int n, char *b,
 		unsigned char flags, int width, int precision)
 {
 	int size;
