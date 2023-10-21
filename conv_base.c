@@ -1,14 +1,14 @@
 #include "main.h"
 
-unsigned int conv_sb(buf_er * output,
+unsigned int conv_sbase(buf_er * output,
 		long int n, char *b,
 		unsigned char flags, int width, int precision);
-unsigned int conv_ub(buf_er *output,
+unsigned int conv_ubase(buf_er *output,
 		unsigned long int n, char *b,
 		unsigned char flags, int width, int precision);
 
 /**
- * conv_sb - Converts a signed long to an inputted base and stores
+ * conv_sbase - Converts a signed long to an inputted base and stores
  *                 the result to a buffer contained in a struct.
  * @output: A buf_er struct containing a character array.
  * @n: A signed long to be converted.
@@ -19,7 +19,7 @@ unsigned int conv_ub(buf_er *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int conv_sb(buf_er *output, long int n, char *b,
+unsigned int conv_sbase(buf_er *output, long int n, char *b,
 		unsigned char flags, int width, int precision)
 {
 	int size;
@@ -53,7 +53,7 @@ unsigned int conv_sb(buf_er *output, long int n, char *b,
 }
 
 /**
- * conv_ub - Converts an unsigned long to an inputted base and
+ * conv_ubase - Converts an unsigned long to an inputted base and
  *                 stores the result to a buffer contained in a struct.
  * @output: A buf_er struct containing a character array.
  * @n: An unsigned long to be converted.
@@ -64,7 +64,7 @@ unsigned int conv_sb(buf_er *output, long int n, char *b,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int conv_ub(buf_er *output, unsigned long int n, char *b,
+unsigned int conv_ubase(buf_er *output, unsigned long int n, char *b,
 		unsigned char flags, int width, int precision)
 {
 	unsigned int size, r = 1;
@@ -74,7 +74,7 @@ unsigned int conv_ub(buf_er *output, unsigned long int n, char *b,
 		size++;
 
 	if (n >= size)
-		r += conv_ub(output, n / size, b,
+		r += conv_ubase(output, n / size, b,
 				flags, width - 1, precision - 1);
 
 	else
