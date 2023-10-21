@@ -21,12 +21,12 @@ unsigned int pr_width(buf_er *output, unsigned int printed,
 		unsigned char flags, int width)
 {
 	unsigned int r = 0;
-	char width = ' ';
+	char wid = ' ';
 
 	if (NEG_FLAG == 0)
 	{
 		for (width -= printed; width > 0;)
-			r += mem_cpy(output, &width, 1);
+			r += mem_cpy(output, &wid, 1);
 	}
 
 	return (r);
@@ -46,13 +46,13 @@ unsigned int pr_str_width(buf_er *output,
 		unsigned char flags, int width, int precision, int size)
 {
 	unsigned int r = 0;
-	char width = ' ';
+	char wid = ' ';
 
 	if (NEG_FLAG == 0)
 	{
 		width -= (precision == -1) ? size : precision;
 		for (; width > 0; width--)
-			r += mem_cpy(output, &width, 1);
+			r += mem_cpy(output, &wid, 1);
 	}
 
 	return (r);
@@ -68,16 +68,16 @@ unsigned int pr_str_width(buf_er *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int pr_neg_width(buffer_t *output, unsigned int printed,
+unsigned int pr_neg_width(buf_er *output, unsigned int printed,
 		unsigned char flags, int width)
 {
 	unsigned int r = 0;
-	char width = ' ';
+	char wid = ' ';
 
 	if (NEG_FLAG == 1)
 	{
 		for (width -= printed; width > 0; width--)
-			r += _memcpy(output, &width, 1);
+			r += mem_cpy(output, &wid, 1);
 	}
 
 	return (r);

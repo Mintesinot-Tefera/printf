@@ -1,7 +1,7 @@
 #include "main.h"
 
 unsigned int mem_cpy(buf_er *output, const char *src, unsigned int n);
-void free_buffer(buffer_t *output);
+void free_buffer(buf_er *output);
 buf_er *init_buffer(void);
 
 /**

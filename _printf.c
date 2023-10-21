@@ -36,13 +36,13 @@ int run_printf(const char *format, va_list arg, buf_er *output)
 		if (*(format + i) == '%')
 		{
 			tmp = 0;
-			flags = handle_flags(format + i + 1, &tmp);
-			width = handle_width(arg, format + i + tmp + 1, &tmp);
-			precision = handle_precision(arg, format + i + tmp + 1,
+			flags = hand_flags(format + i + 1, &tmp);
+			width = hand_width(arg, format + i + tmp + 1, &tmp);
+			precision = hand_precision(arg, format + i + tmp + 1,
 					&tmp);
-			len = handle_length(format + i + tmp + 1, &tmp);
+			len = hand_length(format + i + tmp + 1, &tmp);
 
-			f = handle_specifiers(format + i + tmp + 1);
+			f = hand_specifiers(format + i + tmp + 1);
 			if (f != NULL)
 			{
 				i += tmp + 1;
@@ -58,7 +58,10 @@ int run_printf(const char *format, va_list arg, buf_er *output)
 	r += mem_cpy(output, (format + i), 1);
 		i += (len != 0) ? 1 : 0;
 	}
-	/**
+	clup(arg, output);
+	return (r);
+}
+/**
  * _printf - Outputs a formatted string.
  * @format: Character string to print - may contain directives.
  *
@@ -79,6 +82,5 @@ int _printf(const char *format, ...)
 	va_start(arg, format);
 
 	r = run_printf(format, arg, output);
-
 	return (r);
 }

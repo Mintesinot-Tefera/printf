@@ -127,7 +127,7 @@ unsigned int conv_r(va_list arg, buf_er *output,
 	(void)flags;
 	(void)len;
 
-	str = va_arg(args, char *);
+	str = va_arg(arg, char *);
 	if (str == NULL)
 		return (mem_cpy(output, null, 6));
 
@@ -138,7 +138,7 @@ unsigned int conv_r(va_list arg, buf_er *output,
 
 	end = size - 1;
 	precision = (precision == -1) ? size : precision;
-	for (i = 0; end >= 0 && i < preisionc; i++)
+	for (i = 0; end >= 0 && i < precision; i++)
 	{
 		r += mem_cpy(output, (str + end), 1);
 		end--;
@@ -175,7 +175,7 @@ unsigned int conv_R(va_list arg, buf_er *output,
 
 	str = va_arg(arg, char *);
 	if (str == NULL)
-		return (memc_py(output, null, 6));
+		return (mem_cpy(output, null, 6));
 
 	for (size = 0; *(str + size);)
 		size++;

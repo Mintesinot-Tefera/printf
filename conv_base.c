@@ -36,18 +36,18 @@ unsigned int conv_sbase(buf_er *output, long int n, char *b,
 	else
 	{
 		for (; precision > 1; precision--, width--) /* Handle precision */
-			r += _memcpy(output, &pad, 1);
+			r += mem_cpy(output, &pad, 1);
 
 		if (NEG_FLAG == 0) /* Handle width */
 		{
 			pad = (ZERO_FLAG == 1) ? '0' : ' ';
 			for (; width > 1; width--)
-				r += _memcpy(output, &pad, 1);
+				r += mem_cpy(output, &pad, 1);
 		}
 	}
 
 	digit = b[(n < 0 ? -1 : 1) * (n % size)];
-	_memcpy(output, &digit, 1);
+	mem_cpy(output, &digit, 1);
 
 	return (r);
 }
@@ -85,20 +85,20 @@ unsigned int conv_ubase(buf_er *output, unsigned long int n, char *b,
 			precision -= 2;
 		}
 		for (; precision > 1; precision--, width--) /* Handle precision */
-			r += _memcpy(output, &pad, 1);
+			r += mem_cpy(output, &pad, 1);
 
 		if (NEG_FLAG == 0) /* Handle width */
 		{
 			pad = (ZERO_FLAG == 1) ? '0' : ' ';
 			for (; width > 1; width--)
-				r += _memcpy(output, &pad, 1);
+				r += mem_cpy(output, &pad, 1);
 		}
 		if (((flags >> 5) & 1) == 1) /* Print 0x for ptr address */
-			r += _memcpy(output, lead, 2);
+			r += mem_cpy(output, lead, 2);
 	}
 
 	digit = b[(n % size)];
-	_memcpy(output, &digit, 1);
+	mem_cpy(output, &digit, 1);
 
 	return (r);
 }

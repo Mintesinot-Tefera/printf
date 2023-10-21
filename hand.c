@@ -93,7 +93,7 @@ int hand_width(va_list arg, const char *modifier, char *index)
 
 		if (*modifier == '*')
 		{
-			value = va_arg(args, int);
+			value = va_arg(arg, int);
 			if (value <= 0)
 				return (0);
 			return (value);
@@ -143,7 +143,7 @@ int hand_precision(va_list arg, const char *modifier, char *index)
 
 		if (*modifier == '*')
 		{
-			value = va_arg(args, int);
+			value = va_arg(arg, int);
 			if (value <= 0)
 				return (0);
 			return (value);
@@ -169,7 +169,7 @@ unsigned int (*hand_specifiers(const char *specifier))(va_list, buf_er *,
 		unsigned char, int, int, unsigned char)
 {
 	int i;
-	converter_t converters[] = {
+	conv_t converters[] = {
 		{'c', conv_c},
 		{'s', conv_s},
 		{'d', conv_di},

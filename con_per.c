@@ -30,9 +30,9 @@ unsigned int conv_c(va_list arg, buf_er *output,
 
 	c = va_arg(arg, int);
 
-	r += print_width(output, r, flags, width);
-	r += _memcpy(output, &c, 1);
-	r += print_neg_width(output, r, flags, width);
+	r += pr_width(output, r, flags, width);
+	r += mem_cpy(output, &c, 1);
+	r += pr_neg_width(output, r, flags, width);
 
 	return (r);
 }
@@ -59,9 +59,9 @@ unsigned int conv_percent(va_list arg, buf_er *output,
 	(void)precision;
 	(void)len;
 
-	r += print_width(output, r, flags, width);
-	r += _memcpy(output, &percent, 1);
-	r += print_neg_width(output, r, flags, width);
+	r += pr_width(output, r, flags, width);
+	r += mem_cpy(output, &percent, 1);
+	r += pr_neg_width(output, r, flags, width);
 
 	return (r);
 }
@@ -89,12 +89,12 @@ unsigned int conv_p(va_list arg, buf_er *output,
 
 	address = va_arg(arg, unsigned long int);
 	if (address == '\0')
-		return (_memcpy(output, null, 5));
+		return (mem_cpy(output, null, 5));
 
 	flags |= 32;
-	r += convert_ub(output, address, "0123456789abcdef",
+	r += conv_ubase(output, address, "0123456789abcdef",
 			flags, width, precision);
-	r += print_neg_width(output, r, flags, width);
+	r += pr_neg_width(output, r, flags, width);
 
 	return (r);
 }
